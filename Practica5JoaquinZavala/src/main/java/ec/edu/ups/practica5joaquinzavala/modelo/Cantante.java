@@ -7,7 +7,7 @@ public class Cantante extends Persona {
 
     //atributos private de la clase y encapsulamiento
     private String nombreArtistico;
-    private String generoMusical;
+    private GeneroMusical generoMusical;
     private int numeroDeSensillos;
     private int numeroDeConciertos;
     private int numeroDeGiras;
@@ -24,15 +24,17 @@ public class Cantante extends Persona {
         this.discografia = new ArrayList();
     }
 
-    public Cantante(String nombreArtistico, String generoMusical, int numeroDeSensillos, int numeroDeConciertos, int numeroDeGiras, int codigo, String nombre, String apellido, int edad, double salario, String nacionalidad) {
+    public Cantante(String nombreArtistico, GeneroMusical generoMusical, int numeroDeSensillos, int numeroDeConciertos, int numeroDeGiras, List<Disco> discografia, int codigo, String nombre, String apellido, int edad, double salario, Nacionalidad nacionalidad) {
         super(codigo, nombre, apellido, edad, salario, nacionalidad);
         this.nombreArtistico = nombreArtistico;
         this.generoMusical = generoMusical;
         this.numeroDeSensillos = numeroDeSensillos;
         this.numeroDeConciertos = numeroDeConciertos;
         this.numeroDeGiras = numeroDeGiras;
-        this.discografia = new ArrayList();
+        this.discografia = discografia;
     }
+
+    
 
     //get and set
     public String getNombreArtistico() {
@@ -43,14 +45,14 @@ public class Cantante extends Persona {
         this.nombreArtistico = nombreArtistico;
     }
 
-    public String getGeneroMusical() {
+    public GeneroMusical getGeneroMusical() {
         return generoMusical;
     }
 
-    public void setGeneroMusical(String generoMusical) {
+    public void setGeneroMusical(GeneroMusical generoMusical) {
         this.generoMusical = generoMusical;
     }
-
+    
     public int getNumeroDeSensillos() {
         return numeroDeSensillos;
     }

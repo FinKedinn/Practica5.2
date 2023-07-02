@@ -24,7 +24,7 @@ public class Compositor extends Persona {
         this.cancionesTop100Billaboar = new ArrayList();
     }
 
-    public Compositor(int numeroDeComposiciones, int codigo, String nombre, String apellido, int edad, double salario, String nacionalidad) {
+    public Compositor(int numeroDeComposiciones, int codigo, String nombre, String apellido, int edad, double salario, Nacionalidad nacionalidad) {
         super(codigo, nombre, apellido, edad, salario, nacionalidad);
         this.numeroDeComposiciones = numeroDeComposiciones;
         this.clientes = new ArrayList();

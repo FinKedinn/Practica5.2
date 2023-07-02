@@ -8,7 +8,7 @@ public abstract class Persona {
     private String apellido;
     private int edad;
     private double salario;
-    private String nacionalidad;
+    private Nacionalidad nacionalidad;
     
     //constructores nescesarios
     public Persona() {
@@ -17,8 +17,8 @@ public abstract class Persona {
     public Persona(int codigo) {
         this.codigo = codigo;
     }
-    
-    public Persona(int codigo, String nombre, String apellido, int edad, double salario, String nacionalidad) {
+
+    public Persona(int codigo, String nombre, String apellido, int edad, double salario, Nacionalidad nacionalidad) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -26,6 +26,7 @@ public abstract class Persona {
         this.salario = salario;
         this.nacionalidad = nacionalidad;
     }
+    
     
     //get and set de la clase
     public int getCodigo() {
@@ -68,11 +69,11 @@ public abstract class Persona {
         this.salario = salario;
     }
 
-    public String getNacionalidad() {
+    public Nacionalidad getNacionalidad() {
         return nacionalidad;
     }
 
-    public void setNacionalidad(String nacionalidad) {
+    public void setNacionalidad(Nacionalidad nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
     
