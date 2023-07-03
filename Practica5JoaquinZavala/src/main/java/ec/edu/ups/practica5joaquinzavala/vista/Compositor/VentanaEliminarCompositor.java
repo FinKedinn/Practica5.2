@@ -4,17 +4,22 @@
  */
 package ec.edu.ups.practica5joaquinzavala.vista.Compositor;
 
+import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCompositor;
+import ec.edu.ups.practica5joaquinzavala.modelo.Compositor;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ESTUDIANTE
  */
 public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form VentanaEliminarCompositor
-     */
-    public VentanaEliminarCompositor() {
+    private ControladorCompositor controladorCompositor;
+    private Compositor compositor;
+
+    public VentanaEliminarCompositor(ControladorCompositor controladorCompositor) {
         initComponents();
+        this.controladorCompositor = controladorCompositor;
     }
 
     /**
@@ -75,8 +80,18 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
         jLabel6.setText("Codigo");
 
+        txtNombre.setEnabled(false);
+
+        txtApellido.setEnabled(false);
+
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/button_cancel.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
+        btnAceptar.setEnabled(false);
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -88,6 +103,11 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -177,9 +197,7 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -190,7 +208,37 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
         this.limipiarCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void limipiarCampos(){
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        int codigo = Integer.parseInt(txtCodigo.getText());
+        this.compositor = controladorCompositor.buscarCompositor(codigo);
+        if (compositor != null) {
+            txtApellido.setText(compositor.getApellido());
+            txtNombre.setText(compositor.getNombre());
+            btnBuscar.setEnabled(false);
+            txtCodigo.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        int codigo = Integer.parseInt(txtCodigo.getText());
+        this.compositor = controladorCompositor.buscarCompositor(codigo);
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Quieres elimar de la lista a: " + compositor.getNombre() + " " + compositor.getApellido() + "?");
+        if (respuesta == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(this, "El compositor ha sido eliminado");
+            this.limipiarCampos();
+            btnAceptar.setEnabled(false);
+            btnBuscar.setEnabled(true);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "El compositor no ha sido eliminado");
+            this.limipiarCampos();
+            btnAceptar.setEnabled(false);
+            btnBuscar.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void limipiarCampos() {
         txtCodigo.setText("");
         txtApellido.setText("");
         txtNombre.setText("");

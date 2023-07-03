@@ -8,7 +8,11 @@ import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCantante;
 import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCompositor;
 import ec.edu.ups.practica5joaquinzavala.dao.CantanteDAO;
 import ec.edu.ups.practica5joaquinzavala.dao.CompositorDAO;
+import ec.edu.ups.practica5joaquinzavala.vista.Cancion.VentanaActualizarCancion;
+import ec.edu.ups.practica5joaquinzavala.vista.Compositor.VentanaActualizarCompositor;
+import ec.edu.ups.practica5joaquinzavala.vista.Compositor.VentanaBuscarCompositor;
 import ec.edu.ups.practica5joaquinzavala.vista.Compositor.VentanaCrearCompositor;
+import ec.edu.ups.practica5joaquinzavala.vista.Compositor.VentanaEliminarCompositor;
 import java.net.URL;
 import javax.swing.ImageIcon;
 
@@ -18,7 +22,11 @@ import javax.swing.ImageIcon;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaCrearCompositor ventanaCrearCompositor;
+    private VentanaBuscarCompositor ventanaBuscarCompositor;
+    private VentanaActualizarCompositor ventanaActualizarCompositor;
     private ControladorCompositor controladorCompositor;
+    private VentanaEliminarCompositor ventanaEliminarCompositor;
+    
     private CompositorDAO compositorDAO;
     private CantanteDAO cantanteDAO;
     
@@ -196,10 +204,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         eliminarCompositorMenuItem.setMnemonic('s');
         eliminarCompositorMenuItem.setText("Eliminar");
+        eliminarCompositorMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarCompositorMenuItemActionPerformed(evt);
+            }
+        });
         compositorMenu.add(eliminarCompositorMenuItem);
 
         actualizarComposiorMenuItem.setMnemonic('a');
         actualizarComposiorMenuItem.setText("Actualizar");
+        actualizarComposiorMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarComposiorMenuItemActionPerformed(evt);
+            }
+        });
         compositorMenu.add(actualizarComposiorMenuItem);
 
         listarCompositorMenuItem.setMnemonic('x');
@@ -364,7 +382,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarCantanteMenuItemActionPerformed
 
     private void BuscarCompositorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarCompositorMenuItemActionPerformed
-        // TODO add your handling code here:
+        if(ventanaBuscarCompositor==null){
+            ventanaBuscarCompositor= new VentanaBuscarCompositor(controladorCompositor);
+            desktopPane.add(ventanaBuscarCompositor);
+        }
+        ventanaBuscarCompositor.setVisible(true);
     }//GEN-LAST:event_BuscarCompositorMenuItemActionPerformed
 
     private void BuscarDiscoMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarDiscoMenuItem1ActionPerformed
@@ -378,6 +400,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void crearCantanteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCantanteMenuItemActionPerformed
         
     }//GEN-LAST:event_crearCantanteMenuItemActionPerformed
+
+    private void actualizarComposiorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarComposiorMenuItemActionPerformed
+        if(ventanaActualizarCompositor==null){
+            ventanaActualizarCompositor= new VentanaActualizarCompositor(controladorCompositor);
+            desktopPane.add(ventanaActualizarCompositor);
+        }
+        ventanaActualizarCompositor.setVisible(true);
+    }//GEN-LAST:event_actualizarComposiorMenuItemActionPerformed
+
+    private void eliminarCompositorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarCompositorMenuItemActionPerformed
+        if(ventanaEliminarCompositor==null){
+            ventanaEliminarCompositor= new VentanaEliminarCompositor(controladorCompositor);
+            desktopPane.add(ventanaEliminarCompositor);
+        }
+        ventanaEliminarCompositor.setVisible(true);
+    }//GEN-LAST:event_eliminarCompositorMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
