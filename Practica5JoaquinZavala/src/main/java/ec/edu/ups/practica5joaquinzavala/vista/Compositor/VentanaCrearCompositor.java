@@ -22,6 +22,7 @@ public class VentanaCrearCompositor extends javax.swing.JInternalFrame {
     public VentanaCrearCompositor(ControladorCompositor controladorCompositor) {
         initComponents();
         this.controladorCompositor = controladorCompositor;
+        this.llenarComboBoxNacionalidad();
     }
     
     @SuppressWarnings("unchecked")
@@ -120,8 +121,9 @@ public class VentanaCrearCompositor extends javax.swing.JInternalFrame {
             }
         });
 
-        cmbxNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Elegir una Nacionalidad--", " " }));
+        cmbxNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Elegir una Nacionalidad--" }));
         cmbxNacionalidad.setSelectedItem(null);
+        cmbxNacionalidad.setToolTipText("");
         cmbxNacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbxNacionalidadActionPerformed(evt);
@@ -252,7 +254,7 @@ public class VentanaCrearCompositor extends javax.swing.JInternalFrame {
             Nacionalidad nacionalidad = (Nacionalidad) this.cmbxNacionalidad.getSelectedItem();
             salario = compositor.calularSalario();
             this.compositor = new Compositor(numeroComposiciones, codigo, nombre, apellido, edad, salario, nacionalidad);
-            salario = compositor.calularSalario();
+            compositor.setSalario(compositor.calularSalario());
             controladorCompositor.agregarCompositor(compositor);
             JOptionPane.showMessageDialog(this, "Compositor registrado con exito!" + compositor.getNombre());
             this.limipiarCampos();
@@ -280,6 +282,7 @@ public class VentanaCrearCompositor extends javax.swing.JInternalFrame {
         modelo.addElement(Nacionalidad.PARAGUAY);
         modelo.addElement(Nacionalidad.PERU);
     }
+    
     private boolean validarCompositor(int codigo){
         this.compositor = controladorCompositor.buscarCompositor(codigo);
         if(this.compositor!= null){

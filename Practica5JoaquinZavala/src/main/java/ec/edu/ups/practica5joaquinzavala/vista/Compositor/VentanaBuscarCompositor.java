@@ -4,17 +4,21 @@
  */
 package ec.edu.ups.practica5joaquinzavala.vista.Compositor;
 
+import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCompositor;
+import ec.edu.ups.practica5joaquinzavala.modelo.Compositor;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ESTUDIANTE
  */
 public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form VentanaBuscarCompositor
-     */
-    public VentanaBuscarCompositor() {
+    ControladorCompositor controladorCompositor;
+    Compositor compositor;
+    public VentanaBuscarCompositor(ControladorCompositor controladorCompositor) {
         initComponents();
+        this.controladorCompositor = controladorCompositor;
     }
 
     /**
@@ -30,6 +34,7 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -66,9 +71,13 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/download_1.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 36, -1, 190));
 
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/compositorImagen.png"))); // NOI18N
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, 190));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 259, 580));
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel5.setEnabled(false);
 
         jLabel4.setBackground(new java.awt.Color(204, 204, 255));
         jLabel4.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
@@ -94,10 +103,24 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
         jLabel9.setText("Edad");
 
+        txtNombre.setEnabled(false);
+
+        txtApellido.setEnabled(false);
+
+        txtEdad.setEnabled(false);
+
+        txtSalario.setEnabled(false);
+
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
         btnAceptar.setText("Buscar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         txtNacionalidad.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtNacionalidad.setEnabled(false);
         txtNacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNacionalidadActionPerformed(evt);
@@ -115,6 +138,7 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
         jLabel1.setToolTipText("");
 
         txtNumComposiciones.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtNumComposiciones.setEnabled(false);
         txtNumComposiciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumComposicionesActionPerformed(evt);
@@ -223,7 +247,7 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -242,6 +266,24 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
         this.limipiarCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        int codigo = Integer.parseInt(txtCodigo.getText());
+        compositor = controladorCompositor.buscarCompositor(codigo);
+        if (compositor != null) {
+            txtApellido.setText(compositor.getApellido());
+            txtNombre.setText(compositor.getNombre());
+            txtEdad.setText(String.valueOf(compositor.getEdad()));
+            txtNacionalidad.setText(compositor.getNacionalidad().toString());
+            txtSalario.setText(String.valueOf(compositor.getSalario()));
+            txtNumComposiciones.setText(String.valueOf(compositor.getNumeroDeComposiciones()));
+            
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "El compositor no ha sido registrado!");
+            limpiarCampos();
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
     private void limipiarCampos(){
         txtCodigo.setText("");
         txtApellido.setText("");
@@ -256,6 +298,7 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -275,4 +318,8 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNumComposiciones;
     private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarCampos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

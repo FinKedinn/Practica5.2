@@ -310,14 +310,14 @@
         <Component class="javax.swing.JComboBox" name="cmbxNacionalidad">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
+              <StringArray count="1">
                 <StringItem index="0" value="--Elegir una Nacionalidad--"/>
-                <StringItem index="1" value=" "/>
               </StringArray>
             </Property>
             <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="null" type="code"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbxNacionalidadActionPerformed"/>

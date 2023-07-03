@@ -39,22 +39,18 @@ public class ControladorCompositor {
         return this.compositor = compositorDAO.buscarPorTituloDeCancion(tituloDeLaCancion);
     }
 
-    public boolean actualizarCompositor(Compositor compositor) {
+    public void actualizarCompositor(Compositor compositor) {
         this.compositor = this.buscarCompositor(compositor.getCodigo());
         if (this.compositor != null) {
             compositorDAO.update(compositor);
-            return true;
-        } else {
-            return false;
         }
     }
 
-    public boolean eliminarCompositor(Compositor compositor) {
+    public void eliminarCompositor(Compositor compositor) {
         this.compositor = this.buscarCompositor(compositor.getCodigo());
         if (this.compositor != null) {
             compositorDAO.delete(compositor);
-            return true;
-        } return false;
+        } 
 
     }
 
@@ -104,28 +100,22 @@ public class ControladorCompositor {
         return compositorDAO.readCancion(this.compositor, codigo);
     }
 
-    public boolean eliminarCancion(Compositor compositor, int codigo) {
+    public void eliminarCancion(Compositor compositor, int codigo) {
         this.compositor = compositor;
         Cancion cancion = this.buscarCancion(this.compositor, codigo);
         if (cancion != null) {
             compositorDAO.deleteCancion(this.compositor, codigo);
             compositorDAO.update(this.compositor);
-            return true;
-        } else {
-            return false;
-        }
+        } 
 
     }
 
-    public boolean actualizarCancion(Compositor compositor, int codigo, String titulo, String letra, double tiempoEnMinutos) {
+    public void actualizarCancion(Compositor compositor, int codigo, String titulo, String letra, double tiempoEnMinutos) {
         this.compositor = compositor;
         Cancion cancion = this.buscarCancion(compositor, codigo);
         if (cancion != null) {
             compositorDAO.updateCancion(this.compositor, codigo, titulo, letra, tiempoEnMinutos);
             compositorDAO.update(this.compositor);
-            return true;
-        } else {
-            return false;
         }
     }
 

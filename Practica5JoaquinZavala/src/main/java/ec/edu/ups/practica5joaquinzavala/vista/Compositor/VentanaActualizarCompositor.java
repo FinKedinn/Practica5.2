@@ -4,17 +4,24 @@
  */
 package ec.edu.ups.practica5joaquinzavala.vista.Compositor;
 
+import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCompositor;
+import ec.edu.ups.practica5joaquinzavala.modelo.Compositor;
+import ec.edu.ups.practica5joaquinzavala.modelo.Nacionalidad;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ESTUDIANTE
  */
 public class VentanaActualizarCompositor extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form VentanaActualizarCompositor
-     */
-    public VentanaActualizarCompositor() {
+    ControladorCompositor controladorCompositor;
+    Compositor compositor;
+    public VentanaActualizarCompositor(ControladorCompositor controladorCompositor) {
         initComponents();
+        this.controladorCompositor = controladorCompositor;
+        this.llenarComboBoxNacionalidad();
     }
 
     /**
@@ -46,9 +53,9 @@ public class VentanaActualizarCompositor extends javax.swing.JInternalFrame {
         cmbxNacionalidad = new javax.swing.JComboBox<>();
         btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnBuscar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtNumComposiciones = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -94,11 +101,25 @@ public class VentanaActualizarCompositor extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
         jLabel9.setText("Edad");
 
+        txtNombre.setEnabled(false);
+
+        txtApellido.setEnabled(false);
+
+        txtEdad.setEnabled(false);
+
+        txtSalario.setEnabled(false);
+
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/revert.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         cmbxNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ecuador", "E.E.U.U.", "Francia", "Brazil", " " }));
         cmbxNacionalidad.setSelectedItem(null);
+        cmbxNacionalidad.setEnabled(false);
         cmbxNacionalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbxNacionalidadActionPerformed(evt);
@@ -119,6 +140,21 @@ public class VentanaActualizarCompositor extends javax.swing.JInternalFrame {
         jLabel1.setText("Actualizar un compositor");
         jLabel1.setToolTipText("");
 
+        jLabel10.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel10.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
+        jLabel10.setText("N° compociciones");
+
+        txtNumComposiciones.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtNumComposiciones.setEnabled(false);
+
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -126,7 +162,9 @@ public class VentanaActualizarCompositor extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(279, 279, 279)
+                        .addGap(176, 176, 176)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAceptar)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar))
@@ -150,8 +188,13 @@ public class VentanaActualizarCompositor extends javax.swing.JInternalFrame {
                                         .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtSalario, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(cmbxNacionalidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(0, 80, Short.MAX_VALUE))
+                                    .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNumComposiciones, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(0, 52, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,62 +225,33 @@ public class VentanaActualizarCompositor extends javax.swing.JInternalFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbxNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNumComposiciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnBuscar))
                 .addGap(17, 17, 17))
         );
-
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
-        btnBuscar.setText("Buscar");
-
-        jLabel10.setBackground(new java.awt.Color(204, 204, 255));
-        jLabel10.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
-        jLabel10.setText("N° compociciones");
-
-        txtNumComposiciones.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(368, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(430, 430, 430))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNumComposiciones, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(216, 216, 216))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 31, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(4, 4, 4)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 102, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(455, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumComposiciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscar)
-                .addGap(49, 49, 49))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 50, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(0, 32, Short.MAX_VALUE)))
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -252,6 +266,73 @@ public class VentanaActualizarCompositor extends javax.swing.JInternalFrame {
         this.limipiarCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        int codigo = Integer.parseInt(txtCodigo.getText());
+        compositor = controladorCompositor.buscarCompositor(codigo);
+        if (compositor != null) {
+            txtApellido.setText(compositor.getApellido());
+            txtNombre.setText(compositor.getNombre());
+            txtEdad.setText(String.valueOf(compositor.getEdad()));
+            cmbxNacionalidad.setSelectedIndex(compositor.getNacionalidad().ordinal());
+            txtSalario.setText(String.valueOf(compositor.getSalario()));
+            txtNumComposiciones.setText(String.valueOf(compositor.getNumeroDeComposiciones()));
+            this.cambiarEstado(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "El compositor no ha sido registrado!");
+            this.limipiarCampos();
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        if(!isEmptyCampos()){
+            int codigo = Integer.parseInt(txtCodigo.getText());
+            String nombre = txtNombre.getText();
+            String apellido = txtApellido.getText();
+            int edad = Integer.parseInt(txtEdad.getText());
+            double salario = Double.parseDouble(txtSalario.getText());
+            int numeroComposiciones = Integer.parseInt(txtNumComposiciones.getText());
+            Nacionalidad nacionalidad = (Nacionalidad) this.cmbxNacionalidad.getSelectedItem();
+            this.compositor = new Compositor(numeroComposiciones, codigo, nombre, apellido, edad, salario, nacionalidad);
+            controladorCompositor.actualizarCompositor(compositor);
+            JOptionPane.showMessageDialog(this, "Compositor actualizado con exito!" + compositor.getNombre());
+            this.limipiarCampos();
+            this.cambiarEstado(false);
+        }else{
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios de rellenar");
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private boolean isEmptyCampos(){
+        if (txtCodigo.getText().isEmpty() || txtApellido.getText().isEmpty() || txtNombre.getText().isEmpty() || txtEdad.getText().isEmpty() || txtSalario.getText().isEmpty() || txtNumComposiciones.getText().isEmpty()) {
+            return true;
+        }return false;
+    }
+    
+    private void llenarComboBoxNacionalidad(){
+        DefaultComboBoxModel<Nacionalidad> modelo = (DefaultComboBoxModel) this.cmbxNacionalidad.getModel();
+        modelo.removeAllElements();
+        modelo.addElement(Nacionalidad.ARGENTINA);
+        modelo.addElement(Nacionalidad.BRAZIL);
+        modelo.addElement(Nacionalidad.CANADA);
+        modelo.addElement(Nacionalidad.COLOMBIA);
+        modelo.addElement(Nacionalidad.ECUADOR);
+        modelo.addElement(Nacionalidad.ESPANIA);
+        modelo.addElement(Nacionalidad.ESTADOS_UNIDOS);
+        modelo.addElement(Nacionalidad.MEXICO);
+        modelo.addElement(Nacionalidad.PARAGUAY);
+        modelo.addElement(Nacionalidad.PERU);
+    }
+    
+    private void cambiarEstado(boolean bandera) {
+        txtCodigo.setEnabled(!bandera);
+        txtApellido.setEnabled(bandera);
+        txtEdad.setEnabled(bandera);
+        cmbxNacionalidad.setEnabled(bandera);
+        txtNombre.setEnabled(bandera);
+        txtNumComposiciones.setEnabled(bandera);
+        txtSalario.setEnabled(bandera);
+    }
+    
     private void limipiarCampos(){
         txtCodigo.setText("");
         txtApellido.setText("");
