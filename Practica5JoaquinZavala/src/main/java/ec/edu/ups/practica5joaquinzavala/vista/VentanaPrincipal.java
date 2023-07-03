@@ -403,7 +403,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemEliminarCompositorActionPerformed
 
     private void menuItemListarCompositorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarCompositorActionPerformed
-        
+        if(ventanaListarCompositor==null){
+            ventanaListarCompositor= new VentanaListarCompositor(controladorCompositor);
+            desktopPane.add(ventanaListarCompositor);
+        }
+        ventanaListarCompositor.setVisible(true);
     }//GEN-LAST:event_menuItemListarCompositorActionPerformed
 
     private void itemMenuRegistrarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuRegistrarDiscoActionPerformed
