@@ -8,7 +8,6 @@ import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCantante;
 import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCompositor;
 import ec.edu.ups.practica5joaquinzavala.dao.CantanteDAO;
 import ec.edu.ups.practica5joaquinzavala.dao.CompositorDAO;
-import ec.edu.ups.practica5joaquinzavala.vista.Cantante.VentanaCrearCantante;
 import ec.edu.ups.practica5joaquinzavala.vista.Compositor.VentanaCrearCompositor;
 import java.net.URL;
 import javax.swing.ImageIcon;
@@ -18,19 +17,16 @@ import javax.swing.ImageIcon;
  * @author ESTUDIANTE
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    private VentanaCrearCantante ventanaCrearCantante;
     private VentanaCrearCompositor ventanaCrearCompositor;
     private ControladorCompositor controladorCompositor;
-    private ControladorCantante controladorCantante;
     private CompositorDAO compositorDAO;
     private CantanteDAO cantanteDAO;
     
     public VentanaPrincipal() {
         initComponents();
-        this.compositorDAO = new CompositorDAO();
-        this.cantanteDAO = new CantanteDAO();
-        this.ventanaCrearCompositor = new VentanaCrearCompositor(controladorCompositor);
-        this.controladorCompositor = new ControladorCompositor(compositorDAO, cantanteDAO);
+        cantanteDAO = new CantanteDAO();
+        compositorDAO = new CompositorDAO();
+        controladorCompositor = new ControladorCompositor(compositorDAO, cantanteDAO);
     }
 
     /**
@@ -115,17 +111,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(153, 0, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/download_1.png"))); // NOI18N
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 240, 220));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/e4.jpg"))); // NOI18N
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 250, 70));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/e4.jpg"))); // NOI18N
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 80, 160));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/e4.jpg"))); // NOI18N
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 160));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/e4.jpg"))); // NOI18N
@@ -137,16 +131,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 290, 70));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/e4.jpg"))); // NOI18N
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 300, 70));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/e4.jpg"))); // NOI18N
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 240, 70));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/e4.jpg"))); // NOI18N
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 80, 190));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/e4.jpg"))); // NOI18N
         jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 100, 150));
 
         cantanteMenu.setMnemonic('f');

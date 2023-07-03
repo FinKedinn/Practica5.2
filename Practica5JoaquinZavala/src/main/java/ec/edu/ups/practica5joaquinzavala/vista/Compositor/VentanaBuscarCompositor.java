@@ -92,6 +92,7 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
         jLabel9.setText("Edad");
 
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
 
         btnCancelar.setText("Cancelar");
