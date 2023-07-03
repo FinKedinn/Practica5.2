@@ -21,15 +21,16 @@ import javax.swing.ImageIcon;
  * @author ESTUDIANTE
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+
     private VentanaCrearCompositor ventanaCrearCompositor;
     private VentanaBuscarCompositor ventanaBuscarCompositor;
     private VentanaActualizarCompositor ventanaActualizarCompositor;
     private ControladorCompositor controladorCompositor;
     private VentanaEliminarCompositor ventanaEliminarCompositor;
-    
+
     private CompositorDAO compositorDAO;
     private CantanteDAO cantanteDAO;
-    
+
     public VentanaPrincipal() {
         initComponents();
         cantanteDAO = new CantanteDAO();
@@ -119,6 +120,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(153, 0, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoUno.png"))); // NOI18N
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 240, 220));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/e4.jpg"))); // NOI18N
@@ -354,8 +357,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_listarCompositorMenuItemActionPerformed
 
     private void crearCompositorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCompositorMenuItemActionPerformed
-        if(ventanaCrearCompositor==null){
-            ventanaCrearCompositor= new VentanaCrearCompositor(controladorCompositor);
+        if (ventanaCrearCompositor == null) {
+            ventanaCrearCompositor = new VentanaCrearCompositor(controladorCompositor);
             desktopPane.add(ventanaCrearCompositor);
         }
         ventanaCrearCompositor.setVisible(true);
@@ -382,8 +385,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarCantanteMenuItemActionPerformed
 
     private void BuscarCompositorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarCompositorMenuItemActionPerformed
-        if(ventanaBuscarCompositor==null){
-            ventanaBuscarCompositor= new VentanaBuscarCompositor(controladorCompositor);
+        if (ventanaBuscarCompositor == null) {
+            ventanaBuscarCompositor = new VentanaBuscarCompositor(controladorCompositor);
             desktopPane.add(ventanaBuscarCompositor);
         }
         ventanaBuscarCompositor.setVisible(true);
@@ -398,20 +401,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarCancionMenuItemActionPerformed
 
     private void crearCantanteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCantanteMenuItemActionPerformed
-        
+
     }//GEN-LAST:event_crearCantanteMenuItemActionPerformed
 
     private void actualizarComposiorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarComposiorMenuItemActionPerformed
-        if(ventanaActualizarCompositor==null){
-            ventanaActualizarCompositor= new VentanaActualizarCompositor(controladorCompositor);
+        if (ventanaActualizarCompositor == null) {
+            ventanaActualizarCompositor = new VentanaActualizarCompositor(controladorCompositor);
             desktopPane.add(ventanaActualizarCompositor);
         }
         ventanaActualizarCompositor.setVisible(true);
     }//GEN-LAST:event_actualizarComposiorMenuItemActionPerformed
 
     private void eliminarCompositorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarCompositorMenuItemActionPerformed
-        if(ventanaEliminarCompositor==null){
-            ventanaEliminarCompositor= new VentanaEliminarCompositor(controladorCompositor);
+        if (ventanaEliminarCompositor == null) {
+            ventanaEliminarCompositor = new VentanaEliminarCompositor(controladorCompositor);
             desktopPane.add(ventanaEliminarCompositor);
         }
         ventanaEliminarCompositor.setVisible(true);

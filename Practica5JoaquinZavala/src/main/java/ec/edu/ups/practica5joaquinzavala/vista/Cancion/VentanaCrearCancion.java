@@ -26,13 +26,227 @@ public class VentanaCrearCancion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel5 = new javax.swing.JPanel();
+        jLabelTiempoEnMinutos = new javax.swing.JLabel();
+        jLabelTituloCancion = new javax.swing.JLabel();
+        jLabelCodigoCancion = new javax.swing.JLabel();
+        txtCodigoCancion = new javax.swing.JTextField();
+        txtTitulo = new javax.swing.JTextField();
+        txtTiempoEnMinutos = new javax.swing.JTextField();
+        btnAceptar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        jLabelLetra1 = new javax.swing.JLabel();
+        txtLetra1 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        txtCodigo2 = new javax.swing.JTextField();
+        txtNombre2 = new javax.swing.JTextField();
+        txtApellido2 = new javax.swing.JTextField();
+        btnAceptar2 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        btnCancelar2 = new javax.swing.JButton();
+
         setBorder(javax.swing.BorderFactory.createTitledBorder("CrearCancion"));
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel5.setEnabled(false);
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelTiempoEnMinutos.setBackground(new java.awt.Color(204, 204, 255));
+        jLabelTiempoEnMinutos.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
+        jLabelTiempoEnMinutos.setText("TiempoEnMinutos");
+        jPanel5.add(jLabelTiempoEnMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 200, 45));
+
+        jLabelTituloCancion.setBackground(new java.awt.Color(204, 204, 255));
+        jLabelTituloCancion.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
+        jLabelTituloCancion.setText("Titulo");
+        jPanel5.add(jLabelTituloCancion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 114, 45));
+
+        jLabelCodigoCancion.setBackground(new java.awt.Color(204, 204, 255));
+        jLabelCodigoCancion.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
+        jLabelCodigoCancion.setText("Codigo");
+        jPanel5.add(jLabelCodigoCancion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 114, 45));
+        jPanel5.add(txtCodigoCancion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 295, -1));
+
+        txtTitulo.setEnabled(false);
+        jPanel5.add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 295, -1));
+
+        txtTiempoEnMinutos.setEnabled(false);
+        jPanel5.add(txtTiempoEnMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 295, -1));
+
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        btnAceptar.setText("Crear");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        jLabel1.setText("Crear una Cancion");
+        jLabel1.setToolTipText("");
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 465, -1));
+
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
+
+        jLabelLetra1.setBackground(new java.awt.Color(204, 204, 255));
+        jLabelLetra1.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
+        jLabelLetra1.setText("Letra");
+        jPanel5.add(jLabelLetra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 114, 45));
+
+        txtLetra1.setEnabled(false);
+        jPanel5.add(txtLetra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 295, -1));
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 660, 440));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setText("Crear una Cancion");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 14, 191, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 36, -1, 190));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/compositorImagen.png"))); // NOI18N
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, 190));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 780));
+
+        jPanel6.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel6.setEnabled(false);
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel12.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
+        jLabel12.setText("Apellido");
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 227, 114, 45));
+
+        jLabel13.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel13.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
+        jLabel13.setText("Nombre");
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 176, 114, 45));
+
+        jLabel14.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel14.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
+        jLabel14.setText("Codigo");
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 125, 114, 45));
+        jPanel6.add(txtCodigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 138, 295, -1));
+
+        txtNombre2.setEnabled(false);
+        jPanel6.add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 189, 295, -1));
+
+        txtApellido2.setEnabled(false);
+        jPanel6.add(txtApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 240, 295, -1));
+
+        btnAceptar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        btnAceptar2.setText("Buscar");
+        btnAceptar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptar2ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnAceptar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 290, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        jLabel15.setText("Buscar un compositor");
+        jLabel15.setToolTipText("");
+        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 38, 465, -1));
+
+        btnCancelar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
+        btnCancelar2.setText("Cancelar");
+        btnCancelar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelar2ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnCancelar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 290, -1, -1));
+
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 660, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        int codigo = Integer.parseInt(txtCodigoCancion.getText());
+        compositor = controladorCompositor.buscarCompositor(codigo);
+        if (compositor != null) {
+            txtTiempoEnMinutos.setText(compositor.getApellido());
+            txtTitulo.setText(compositor.getNombre());
+            txtEdad.setText(String.valueOf(compositor.getEdad()));
+            txtNacionalidad.setText(compositor.getNacionalidad().toString());
+            txtSalario.setText(String.valueOf(compositor.getSalario()));
+            txtNumComposiciones.setText(String.valueOf(compositor.getNumeroDeComposiciones()));
+
+        } else {
+            JOptionPane.showMessageDialog(this, "El compositor no ha sido registrado!");
+            limpiarCampos();
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.setVisible(false);
+        this.limipiarCampos();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnAceptar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAceptar2ActionPerformed
+
+    private void btnCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelar2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnAceptar2;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelar2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelCodigoCancion;
+    private javax.swing.JLabel jLabelLetra1;
+    private javax.swing.JLabel jLabelTiempoEnMinutos;
+    private javax.swing.JLabel jLabelTituloCancion;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JTextField txtApellido2;
+    private javax.swing.JTextField txtCodigo2;
+    private javax.swing.JTextField txtCodigoCancion;
+    private javax.swing.JTextField txtLetra1;
+    private javax.swing.JTextField txtNombre2;
+    private javax.swing.JTextField txtTiempoEnMinutos;
+    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }
