@@ -4,14 +4,33 @@
  */
 package ec.edu.ups.practica5joaquinzavala.vista;
 
+import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCantante;
+import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCompositor;
+import ec.edu.ups.practica5joaquinzavala.dao.CantanteDAO;
+import ec.edu.ups.practica5joaquinzavala.dao.CompositorDAO;
+import ec.edu.ups.practica5joaquinzavala.vista.Cantante.VentanaCrearCantante;
+import ec.edu.ups.practica5joaquinzavala.vista.Compositor.VentanaCrearCompositor;
+import java.net.URL;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author ESTUDIANTE
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
+    private VentanaCrearCantante ventanaCrearCantante;
+    private VentanaCrearCompositor ventanaCrearCompositor;
+    private ControladorCompositor controladorCompositor;
+    private ControladorCantante controladorCantante;
+    private CompositorDAO compositorDAO;
+    private CantanteDAO cantanteDAO;
+    
     public VentanaPrincipal() {
         initComponents();
+        this.compositorDAO = new CompositorDAO();
+        this.cantanteDAO = new CantanteDAO();
+        this.ventanaCrearCompositor = new VentanaCrearCompositor(controladorCompositor);
+        this.controladorCompositor = new ControladorCompositor(compositorDAO, cantanteDAO);
     }
 
     /**
@@ -100,7 +119,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/download_1.png"))); // NOI18N
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 240, 220));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/e4.jpg"))); // NOI18N
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 250, 70));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
@@ -109,7 +128,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 160));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/e4.jpg"))); // NOI18N
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 100, 200));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/e4.jpg"))); // NOI18N
@@ -323,7 +342,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_listarCompositorMenuItemActionPerformed
 
     private void crearCompositorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCompositorMenuItemActionPerformed
-        // TODO add your handling code here:
+        if(ventanaCrearCompositor==null){
+            ventanaCrearCompositor= new VentanaCrearCompositor(controladorCompositor);
+            desktopPane.add(ventanaCrearCompositor);
+        }
+        ventanaCrearCompositor.setVisible(true);
     }//GEN-LAST:event_crearCompositorMenuItemActionPerformed
 
     private void crearDiscoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDiscoMenuItemActionPerformed
@@ -359,7 +382,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarCancionMenuItemActionPerformed
 
     private void crearCantanteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCantanteMenuItemActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_crearCantanteMenuItemActionPerformed
 
     /**

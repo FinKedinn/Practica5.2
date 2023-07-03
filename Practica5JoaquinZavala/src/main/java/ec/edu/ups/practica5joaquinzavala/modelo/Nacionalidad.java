@@ -18,5 +18,5 @@ public enum Nacionalidad {
     ESTADOS_UNIDOS,
     CANADA,
     MEXICO,
-    ESPANIA,
+    ESPANIA
 }
