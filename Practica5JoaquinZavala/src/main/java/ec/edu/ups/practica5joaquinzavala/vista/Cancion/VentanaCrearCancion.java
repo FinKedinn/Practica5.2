@@ -4,17 +4,21 @@
  */
 package ec.edu.ups.practica5joaquinzavala.vista.Cancion;
 
+import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCompositor;
+import ec.edu.ups.practica5joaquinzavala.modelo.Compositor;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ESTUDIANTE
  */
 public class VentanaCrearCancion extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form VentanaCrearCantante
-     */
-    public VentanaCrearCancion() {
+    private Compositor  compositor;
+    private ControladorCompositor controladorCompositor;
+    
+    public VentanaCrearCancion(ControladorCompositor controladorCompositor) {
         initComponents();
+        this.controladorCompositor = controladorCompositor;
     }
 
     /**
@@ -46,9 +50,9 @@ public class VentanaCrearCancion extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        txtCodigo2 = new javax.swing.JTextField();
-        txtNombre2 = new javax.swing.JTextField();
-        txtApellido2 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
         btnAceptar2 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         btnCancelar2 = new javax.swing.JButton();
@@ -152,13 +156,13 @@ public class VentanaCrearCancion extends javax.swing.JInternalFrame {
         jLabel14.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
         jLabel14.setText("Codigo");
         jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 125, 114, 45));
-        jPanel6.add(txtCodigo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 138, 295, -1));
+        jPanel6.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 138, 295, -1));
 
-        txtNombre2.setEnabled(false);
-        jPanel6.add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 189, 295, -1));
+        txtNombre.setEnabled(false);
+        jPanel6.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 189, 295, -1));
 
-        txtApellido2.setEnabled(false);
-        jPanel6.add(txtApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 240, 295, -1));
+        txtApellido.setEnabled(false);
+        jPanel6.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 240, 295, -1));
 
         btnAceptar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
         btnAceptar2.setText("Buscar");
@@ -196,14 +200,10 @@ public class VentanaCrearCancion extends javax.swing.JInternalFrame {
         if (compositor != null) {
             txtTiempoEnMinutos.setText(compositor.getApellido());
             txtTitulo.setText(compositor.getNombre());
-            txtEdad.setText(String.valueOf(compositor.getEdad()));
-            txtNacionalidad.setText(compositor.getNacionalidad().toString());
-            txtSalario.setText(String.valueOf(compositor.getSalario()));
-            txtNumComposiciones.setText(String.valueOf(compositor.getNumeroDeComposiciones()));
 
         } else {
             JOptionPane.showMessageDialog(this, "El compositor no ha sido registrado!");
-            limpiarCampos();
+            limipiarCampos();
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -212,6 +212,12 @@ public class VentanaCrearCancion extends javax.swing.JInternalFrame {
         this.limipiarCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void limipiarCampos(){
+        txtCodigo.setText("");
+        txtApellido.setText("");
+        txtNombre.setText("");
+ 
+    }
     private void btnAceptar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptar2ActionPerformed
@@ -241,11 +247,11 @@ public class VentanaCrearCancion extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField txtApellido2;
-    private javax.swing.JTextField txtCodigo2;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCodigoCancion;
     private javax.swing.JTextField txtLetra1;
-    private javax.swing.JTextField txtNombre2;
+    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTiempoEnMinutos;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables

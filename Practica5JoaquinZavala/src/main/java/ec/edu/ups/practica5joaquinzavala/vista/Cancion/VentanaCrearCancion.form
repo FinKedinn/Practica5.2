@@ -315,14 +315,14 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCodigo2">
+        <Component class="javax.swing.JTextField" name="txtCodigo">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="238" y="138" width="295" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNombre2">
+        <Component class="javax.swing.JTextField" name="txtNombre">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -332,7 +332,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtApellido2">
+        <Component class="javax.swing.JTextField" name="txtApellido">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
