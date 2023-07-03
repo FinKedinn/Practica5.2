@@ -102,7 +102,7 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
 
         jLabel11.setBackground(new java.awt.Color(204, 204, 255));
         jLabel11.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
-        jLabel11.setText("GeneroMusical");
+        jLabel11.setText("Genero Musical");
 
         jLabel12.setBackground(new java.awt.Color(204, 204, 255));
         jLabel12.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N

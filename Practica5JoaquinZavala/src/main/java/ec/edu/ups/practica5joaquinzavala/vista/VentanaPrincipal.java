@@ -105,6 +105,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(2000, 1200));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -131,6 +132,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(desktopPane)
         );
+
+        menuBar.setMinimumSize(new java.awt.Dimension(400, 32000));
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Cantante");

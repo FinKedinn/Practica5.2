@@ -33,7 +33,6 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -57,22 +56,16 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("BUSCAR COMPOSITOR");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 14, 191, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/download_1.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 36, -1, 190));
+        jPanel2.add(jLabel3);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/compositorImagen.png"))); // NOI18N
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, 190));
+        jPanel2.add(jLabel11);
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 259, 580));
 
@@ -103,12 +96,18 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
         jLabel9.setText("Edad");
 
+        txtCodigo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtNombre.setEnabled(false);
 
+        txtApellido.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtApellido.setEnabled(false);
 
+        txtEdad.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtEdad.setEnabled(false);
 
+        txtSalario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtSalario.setEnabled(false);
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
@@ -145,7 +144,7 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/button_cancel.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,7 +279,7 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
             
         } else {
             JOptionPane.showMessageDialog(this, "El compositor no ha sido registrado!");
-            limpiarCampos();
+            limipiarCampos();
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -299,7 +298,6 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -319,7 +317,4 @@ public class VentanaBuscarCompositor extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 
-    private void limpiarCampos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

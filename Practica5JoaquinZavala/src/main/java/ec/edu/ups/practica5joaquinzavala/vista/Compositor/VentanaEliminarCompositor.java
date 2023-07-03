@@ -31,10 +31,8 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -51,20 +49,14 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("ELIMINAR COMPOSITOR");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 14, 191, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/download_1.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 36, -1, 190));
+        jPanel2.add(jLabel3);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/compositorImagen.png"))); // NOI18N
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, 190));
+        jPanel2.add(jLabel10);
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -80,8 +72,12 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Roman", 0, 18)); // NOI18N
         jLabel6.setText("Codigo");
 
+        txtCodigo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtNombre.setEnabled(false);
 
+        txtApellido.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtApellido.setEnabled(false);
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/button_cancel.png"))); // NOI18N
@@ -168,36 +164,19 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
                 .addContainerGap(104, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -206,6 +185,7 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
         this.limipiarCampos();
+        cambiarEstado(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -214,8 +194,7 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
         if (compositor != null) {
             txtApellido.setText(compositor.getApellido());
             txtNombre.setText(compositor.getNombre());
-            btnBuscar.setEnabled(false);
-            txtCodigo.setEnabled(true);
+            cambiarEstado(false);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -224,24 +203,26 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
         this.compositor = controladorCompositor.buscarCompositor(codigo);
         int respuesta = JOptionPane.showConfirmDialog(this, "¿Quieres elimar de la lista a: " + compositor.getNombre() + " " + compositor.getApellido() + "?");
         if (respuesta == JOptionPane.YES_OPTION) {
+            controladorCompositor.eliminarCompositor(compositor);
             JOptionPane.showMessageDialog(this, "El compositor ha sido eliminado");
             this.limipiarCampos();
-            btnAceptar.setEnabled(false);
-            btnBuscar.setEnabled(true);
-
         } else {
             JOptionPane.showMessageDialog(this, "El compositor no ha sido eliminado");
             this.limipiarCampos();
-            btnAceptar.setEnabled(false);
-            btnBuscar.setEnabled(true);
         }
-
+        cambiarEstado(true);
+        
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void limipiarCampos() {
         txtCodigo.setText("");
         txtApellido.setText("");
         txtNombre.setText("");
+    }
+    private void cambiarEstado(boolean bandera){
+        btnAceptar.setEnabled(!bandera);
+        btnBuscar.setEnabled(bandera);
+        txtCodigo.setEnabled(bandera);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -250,12 +231,10 @@ public class VentanaEliminarCompositor extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField txtApellido;

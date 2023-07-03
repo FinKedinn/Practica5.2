@@ -18,13 +18,14 @@ public class VentanaCrearCompositor extends javax.swing.JInternalFrame {
 
     private ControladorCompositor controladorCompositor;
     private Compositor compositor;
-    
+
     public VentanaCrearCompositor(ControladorCompositor controladorCompositor) {
         initComponents();
         this.controladorCompositor = controladorCompositor;
         this.llenarComboBoxNacionalidad();
+        this.setResizable(false);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -54,7 +55,7 @@ public class VentanaCrearCompositor extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
-        setMaximizable(true);
+        setMaximumSize(new java.awt.Dimension(855, 585));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -228,7 +229,7 @@ public class VentanaCrearCompositor extends javax.swing.JInternalFrame {
                 .addGap(52, 52, 52))
         );
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 0, 580, 540));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 0, 580, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -237,26 +238,26 @@ public class VentanaCrearCompositor extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbxNacionalidadActionPerformed
 
-   
+
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        int codigo = Integer.parseInt(txtCodigo.getText());
-        while(validarCompositor(codigo)){
-            validarCompositor(codigo);
-        }
-        
-        if(!isEmptyCampos()){
-            String nombre = txtNombre.getText();
-            String apellido = txtApellido.getText();
-            int edad = Integer.parseInt(txtEdad.getText());
-            double salario = Double.parseDouble(txtSalario.getText());
-            int numeroComposiciones = Integer.parseInt(txtNumComposiciones.getText());
-            Nacionalidad nacionalidad = (Nacionalidad) this.cmbxNacionalidad.getSelectedItem();
-            this.compositor = new Compositor(numeroComposiciones, codigo, nombre, apellido, edad, salario, nacionalidad);
-            compositor.setSalario(compositor.calularSalario());
-            controladorCompositor.agregarCompositor(compositor);
-            JOptionPane.showMessageDialog(this, "Compositor registrado con exito!" + compositor.getNombre());
-            this.limipiarCampos();
-        }else{
+        if (!isEmptyCampos()) {
+            int codigo = Integer.parseInt(txtCodigo.getText());
+            if (validarCompositor(codigo)) {
+                String nombre = txtNombre.getText();
+                String apellido = txtApellido.getText();
+                int edad = Integer.parseInt(txtEdad.getText());
+                double salario = Double.parseDouble(txtSalario.getText());
+                int numeroComposiciones = Integer.parseInt(txtNumComposiciones.getText());
+                Nacionalidad nacionalidad = (Nacionalidad) this.cmbxNacionalidad.getSelectedItem();
+                this.compositor = new Compositor(numeroComposiciones, codigo, nombre, apellido, edad, salario, nacionalidad);
+                compositor.setSalario(compositor.calularSalario());
+                controladorCompositor.agregarCompositor(compositor);
+                JOptionPane.showMessageDialog(this, "Compositor registrado con exito!");
+                this.limipiarCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "EL compositor con el codigo: " + codigo + " ya esxite!");
+            }
+        } else {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios de rellenar");
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -266,7 +267,7 @@ public class VentanaCrearCompositor extends javax.swing.JInternalFrame {
         this.limipiarCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void llenarComboBoxNacionalidad(){
+    private void llenarComboBoxNacionalidad() {
         DefaultComboBoxModel<Nacionalidad> modelo = (DefaultComboBoxModel) this.cmbxNacionalidad.getModel();
         modelo.removeAllElements();
         modelo.addElement(Nacionalidad.ARGENTINA);
@@ -280,22 +281,23 @@ public class VentanaCrearCompositor extends javax.swing.JInternalFrame {
         modelo.addElement(Nacionalidad.PARAGUAY);
         modelo.addElement(Nacionalidad.PERU);
     }
-    
-    private boolean validarCompositor(int codigo){
+
+    private boolean validarCompositor(int codigo) {
         this.compositor = controladorCompositor.buscarCompositor(codigo);
-        if(this.compositor!= null){
-            JOptionPane.showMessageDialog(this, "EL compositor con el codigo: " + codigo +  "ya esxite!");
-            return true;
-        }return false;
+        if (this.compositor != null) {
+            return false;
+        }
+        return true;
     }
-    
-    private boolean isEmptyCampos(){
+
+    private boolean isEmptyCampos() {
         if (txtCodigo.getText().isEmpty() || txtApellido.getText().isEmpty() || txtNombre.getText().isEmpty() || txtEdad.getText().isEmpty() || txtSalario.getText().isEmpty() || txtNumComposiciones.getText().isEmpty()) {
             return true;
-        }return false;
+        }
+        return false;
     }
-    
-    private void limipiarCampos(){
+
+    private void limipiarCampos() {
         txtCodigo.setText("");
         txtApellido.setText("");
         txtEdad.setText("");
