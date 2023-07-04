@@ -24,14 +24,14 @@ public class Cantante extends Persona {
         this.discografia = new ArrayList();
     }
 
-    public Cantante(String nombreArtistico, GeneroMusical generoMusical, int numeroDeSensillos, int numeroDeConciertos, int numeroDeGiras, List<Disco> discografia, int codigo, String nombre, String apellido, int edad, double salario, Nacionalidad nacionalidad) {
+    public Cantante(String nombreArtistico, GeneroMusical generoMusical, int numeroDeSensillos, int numeroDeConciertos, int numeroDeGiras, int codigo, String nombre, String apellido, int edad, double salario, Nacionalidad nacionalidad) {
         super(codigo, nombre, apellido, edad, salario, nacionalidad);
         this.nombreArtistico = nombreArtistico;
         this.generoMusical = generoMusical;
         this.numeroDeSensillos = numeroDeSensillos;
         this.numeroDeConciertos = numeroDeConciertos;
         this.numeroDeGiras = numeroDeGiras;
-        this.discografia = discografia;
+        this.discografia = new ArrayList();
     }
 
     

@@ -32,8 +32,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaCrearCantante ventanaCrearCantante;
     private VentanaBuscarCantante ventanaBuscarCantante;
     private VentanaActualizarCantante ventanaActualizarCantante;
-    private VentanaEliminarCantante ventanaEliminarCantante;
-    private VentanaListarCantante ventanaListarCantante;
 
     private VentanaCrearCompositor ventanaCrearCompositor;
     private VentanaBuscarCompositor ventanaBuscarCompositor;
@@ -355,15 +353,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemMenuEliminarCantanteActionPerformed
 
     private void itemMenuCrearCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuCrearCantanteActionPerformed
-        
+        if (ventanaCrearCantante == null) {
+            ventanaCrearCantante = new VentanaCrearCantante(controladorCantante);
+            desktopPane.add(ventanaCrearCantante);
+        }
+        ventanaCrearCantante.setVisible(true);
     }//GEN-LAST:event_itemMenuCrearCantanteActionPerformed
 
     private void itemMenuVerCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuVerCantanteActionPerformed
-        
+        if (ventanaBuscarCantante == null) {
+            ventanaBuscarCantante = new VentanaBuscarCantante(controladorCantante);
+            desktopPane.add(ventanaBuscarCantante);
+        }
+        ventanaBuscarCantante.setVisible(true);
     }//GEN-LAST:event_itemMenuVerCantanteActionPerformed
 
     private void menuItemActualizarCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemActualizarCantanteActionPerformed
-        
+         if (ventanaActualizarCantante == null) {
+            ventanaActualizarCantante = new VentanaActualizarCantante(controladorCantante);
+            desktopPane.add(ventanaActualizarCantante);
+        }
+        ventanaActualizarCantante.setVisible(true);
     }//GEN-LAST:event_menuItemActualizarCantanteActionPerformed
 
     private void menuItemListarCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarCantanteActionPerformed
