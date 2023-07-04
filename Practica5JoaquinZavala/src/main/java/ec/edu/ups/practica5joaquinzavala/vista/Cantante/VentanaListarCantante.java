@@ -4,17 +4,26 @@
  */
 package ec.edu.ups.practica5joaquinzavala.vista.Cantante;
 
+import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCantante;
+import ec.edu.ups.practica5joaquinzavala.modelo.Cantante;
+import ec.edu.ups.practica5joaquinzavala.modelo.GeneroMusical;
+import ec.edu.ups.practica5joaquinzavala.modelo.Nacionalidad;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ESTUDIANTE
  */
 public class VentanaListarCantante extends javax.swing.JInternalFrame {
-
+    private ControladorCantante  controladorCantante;
+    
     /**
      * Creates new form VentanaListarCantante
      */
-    public VentanaListarCantante() {
+    public VentanaListarCantante(ControladorCantante  controladorCantante) {
         initComponents();
+        this.controladorCantante = controladorCantante;
     }
 
     /**
@@ -29,64 +38,102 @@ public class VentanaListarCantante extends javax.swing.JInternalFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenu1 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCantante = new javax.swing.JTable();
 
         jMenu1.setText("jMenu1");
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCantante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "NombreArtistico", "Salario", "Sencillos", "Conciertos"
+                "Codigo", "Nombre", "Apellido", "Edad", "Nacionalidad", "Salario", "Nombre artistico", "Genero Musical", "N sencillos", "N conciertos", "N giras"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-        }
+        tblCantante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCantanteMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblCantante);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tblCantanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCantanteMouseClicked
+      
+    }//GEN-LAST:event_tblCantanteMouseClicked
+
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        cargarTabla();
+    }//GEN-LAST:event_formInternalFrameActivated
+
+    private void cargarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) tblCantante.getModel();
+        modelo.setNumRows(0);
+        List<Cantante> listaCantante = controladorCantante.listar();
+        for (Cantante cantante : listaCantante) {
+            String codigo = String.valueOf(cantante.getCodigo());
+            String nombre = cantante.getNombre();
+            String apellido = cantante.getApellido();
+            String edad = String.valueOf(cantante.getEdad());
+            Nacionalidad nacionalidad = cantante.getNacionalidad();
+            String salario = String.valueOf(cantante.getSalario());
+            String nombreArtistico = cantante.getNombreArtistico();
+            GeneroMusical generoMusical = cantante.getGeneroMusical();
+            String numSencillos = String.valueOf(cantante.getNumeroDeSensillos());
+            String numConciertos = String.valueOf(cantante.getNumeroDeConciertos());
+            String numGiras = String.valueOf(cantante.getNumeroDeGiras());
+            Object[] rowData = {codigo, nombre, apellido, edad, nacionalidad, salario, nombreArtistico, generoMusical, numSencillos, numConciertos, numGiras};
+            modelo.addRow(rowData);
+        }
+        tblCantante.setModel(modelo);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblCantante;
     // End of variables declaration//GEN-END:variables
 }

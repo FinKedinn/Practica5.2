@@ -65,8 +65,6 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -179,8 +177,8 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha.png"))); // NOI18N
-        jLabel1.setText("Ingrese un nuevo cantante");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        jLabel1.setText("Buscar un cantante");
         jLabel1.setToolTipText("");
 
         txtNacionalidad.setHorizontalAlignment(javax.swing.JTextField.RIGHT);

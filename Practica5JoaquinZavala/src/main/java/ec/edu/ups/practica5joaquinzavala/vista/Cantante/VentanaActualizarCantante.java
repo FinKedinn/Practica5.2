@@ -72,8 +72,6 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 

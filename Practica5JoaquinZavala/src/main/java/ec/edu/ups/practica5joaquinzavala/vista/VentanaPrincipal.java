@@ -32,7 +32,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaCrearCantante ventanaCrearCantante;
     private VentanaBuscarCantante ventanaBuscarCantante;
     private VentanaActualizarCantante ventanaActualizarCantante;
-
+    private VentanaEliminarCantante ventanaEliminarCantante;
+    private VentanaListarCantante ventanaListarCantante;
+    
     private VentanaCrearCompositor ventanaCrearCompositor;
     private VentanaBuscarCompositor ventanaBuscarCompositor;
     private VentanaActualizarCompositor ventanaActualizarCompositor;
@@ -349,7 +351,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemMenuEliminarCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuEliminarCantanteActionPerformed
-        
+        if (ventanaEliminarCantante == null) {
+            ventanaEliminarCantante = new VentanaEliminarCantante(controladorCantante);
+            desktopPane.add(ventanaEliminarCantante);
+        }
+        ventanaEliminarCantante.setVisible(true);
     }//GEN-LAST:event_itemMenuEliminarCantanteActionPerformed
 
     private void itemMenuCrearCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuCrearCantanteActionPerformed
@@ -377,7 +383,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemActualizarCantanteActionPerformed
 
     private void menuItemListarCantanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarCantanteActionPerformed
-        
+        if (ventanaListarCantante == null) {
+            ventanaListarCantante = new VentanaListarCantante(controladorCantante);
+            desktopPane.add(ventanaListarCantante);
+        }
+        ventanaListarCantante.setVisible(true);
     }//GEN-LAST:event_menuItemListarCantanteActionPerformed
 
     private void menuItemRegistrarCompositorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRegistrarCompositorActionPerformed
