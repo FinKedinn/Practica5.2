@@ -8,6 +8,11 @@ import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCantante;
 import ec.edu.ups.practica5joaquinzavala.controlador.ControladorCompositor;
 import ec.edu.ups.practica5joaquinzavala.dao.CantanteDAO;
 import ec.edu.ups.practica5joaquinzavala.dao.CompositorDAO;
+import ec.edu.ups.practica5joaquinzavala.vista.Cancion.VentanaActualizarCancion;
+import ec.edu.ups.practica5joaquinzavala.vista.Cancion.VentanaBuscarCancion;
+import ec.edu.ups.practica5joaquinzavala.vista.Cancion.VentanaCrearCancion;
+import ec.edu.ups.practica5joaquinzavala.vista.Cancion.VentanaEliminarCancion;
+import ec.edu.ups.practica5joaquinzavala.vista.Cancion.VentanaListarCancion;
 import ec.edu.ups.practica5joaquinzavala.vista.Cantante.VentanaActualizarCantante;
 import ec.edu.ups.practica5joaquinzavala.vista.Cantante.VentanaBuscarCantante;
 import ec.edu.ups.practica5joaquinzavala.vista.Cantante.VentanaCrearCantante;
@@ -41,6 +46,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaEliminarCompositor ventanaEliminarCompositor;
     private VentanaListarCompositor ventanaListarCompositor;
 
+    private VentanaCrearCancion ventanaCrearCancion;
+    private VentanaBuscarCancion ventanaBuscarCancion;
+    private VentanaActualizarCancion ventanaActualizarCancion;
+    private VentanaEliminarCancion ventanaEliminarCancion;
+    private VentanaListarCancion ventanaListarCancion;
     
 
     private ControladorCantante controladorCantante;
@@ -451,23 +461,43 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarDiscoActionPerformed
 
     private void menuItemRegistrarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRegistrarCancionActionPerformed
-        
+        if(ventanaCrearCancion==null){
+            ventanaCrearCancion= new VentanaCrearCancion(controladorCompositor);
+            desktopPane.add(ventanaCrearCancion);
+        }
+        ventanaCrearCancion.setVisible(true);
     }//GEN-LAST:event_menuItemRegistrarCancionActionPerformed
 
     private void menuItemBuscarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemBuscarCancionActionPerformed
-        
+        if(ventanaBuscarCancion==null){
+            ventanaBuscarCancion= new VentanaBuscarCancion(controladorCompositor);
+            desktopPane.add(ventanaBuscarCancion);
+        }
+        ventanaBuscarCancion.setVisible(true);
     }//GEN-LAST:event_menuItemBuscarCancionActionPerformed
 
     private void menuItemActualizarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemActualizarCancionActionPerformed
-        
+        if(ventanaActualizarCancion==null){
+            ventanaActualizarCancion= new VentanaActualizarCancion(controladorCompositor);
+            desktopPane.add(ventanaActualizarCancion);
+        }
+        ventanaActualizarCancion.setVisible(true);
     }//GEN-LAST:event_menuItemActualizarCancionActionPerformed
 
     private void menuItemEliminarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEliminarCancionActionPerformed
-        
+        if(ventanaEliminarCancion==null){
+            ventanaEliminarCancion= new VentanaEliminarCancion(controladorCompositor);
+            desktopPane.add(ventanaEliminarCancion);
+        }
+        ventanaEliminarCancion.setVisible(true);
     }//GEN-LAST:event_menuItemEliminarCancionActionPerformed
 
     private void menuItemListarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarCancionActionPerformed
-       
+       if(ventanaListarCancion==null){
+            ventanaListarCancion= new VentanaListarCancion(controladorCompositor);
+            desktopPane.add(ventanaListarCancion);
+        }
+        ventanaListarCancion.setVisible(true);
     }//GEN-LAST:event_menuItemListarCancionActionPerformed
 
     /**
