@@ -271,6 +271,7 @@ public class VentanaActualizarCancion extends javax.swing.JInternalFrame {
         cambiarEstado(false);
         cambiarEstadoDatosCancion(false);
         limipiarCampos();
+        limipiarCamposCancion();
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
     private void btnActualizarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarCancionActionPerformed

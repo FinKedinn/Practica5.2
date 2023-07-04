@@ -119,7 +119,7 @@ public class Compositor extends Persona {
         }else if (cancionesTop100Billaboar.size() > 6) {
             salarioFinal = salarioFinal + (super.getSalario() * 0.2);
         }
-        return super.getSalario();
+        return salarioFinal;
     }
 
     //metodos de la clase

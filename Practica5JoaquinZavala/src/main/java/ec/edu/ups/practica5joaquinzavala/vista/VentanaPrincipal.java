@@ -23,6 +23,7 @@ import ec.edu.ups.practica5joaquinzavala.vista.Compositor.VentanaBuscarComposito
 import ec.edu.ups.practica5joaquinzavala.vista.Compositor.VentanaCrearCompositor;
 import ec.edu.ups.practica5joaquinzavala.vista.Compositor.VentanaEliminarCompositor;
 import ec.edu.ups.practica5joaquinzavala.vista.Compositor.VentanaListarCompositor;
+import ec.edu.ups.practica5joaquinzavala.vista.disco.VentanaActualizarDisco;
 import ec.edu.ups.practica5joaquinzavala.vista.disco.VentanaBuscarDisco;
 import ec.edu.ups.practica5joaquinzavala.vista.disco.VentanaCrearDisco;
 
@@ -39,6 +40,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaActualizarCantante ventanaActualizarCantante;
     private VentanaEliminarCantante ventanaEliminarCantante;
     private VentanaListarCantante ventanaListarCantante;
+    
+    private VentanaCrearDisco ventanaCrearDisco;
+    private VentanaBuscarDisco ventanaBuscarDisco;
+    private VentanaActualizarDisco ventanaActualizarDisco;
     
     private VentanaCrearCompositor ventanaCrearCompositor;
     private VentanaBuscarCompositor ventanaBuscarCompositor;
@@ -441,15 +446,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarCompositorActionPerformed
 
     private void itemMenuRegistrarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuRegistrarDiscoActionPerformed
-        
+        if (ventanaCrearDisco == null) {
+            ventanaCrearDisco = new VentanaCrearDisco(controladorCantante);
+            desktopPane.add(ventanaCrearDisco);
+        }
+        ventanaCrearDisco.setVisible(true);
     }//GEN-LAST:event_itemMenuRegistrarDiscoActionPerformed
 
     private void menuItemBuscarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemBuscarDiscoActionPerformed
-        
+        if (ventanaBuscarDisco == null) {
+            ventanaBuscarDisco= new VentanaBuscarDisco(controladorCantante);
+            desktopPane.add(ventanaBuscarDisco);
+        }
+        ventanaBuscarDisco.setVisible(true);
     }//GEN-LAST:event_menuItemBuscarDiscoActionPerformed
 
     private void menuItemActualizarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemActualizarDiscoActionPerformed
-        
+        if (ventanaActualizarDisco == null) {
+            ventanaActualizarDisco= new VentanaActualizarDisco(controladorCantante);
+            desktopPane.add(ventanaActualizarDisco);
+        }
+        ventanaActualizarDisco.setVisible(true);
     }//GEN-LAST:event_menuItemActualizarDiscoActionPerformed
 
     private void menuItemEliminarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEliminarDiscoActionPerformed
