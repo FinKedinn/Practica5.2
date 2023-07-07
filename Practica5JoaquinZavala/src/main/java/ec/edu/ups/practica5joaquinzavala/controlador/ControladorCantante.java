@@ -14,6 +14,7 @@ import java.util.List;
  * @author estem
  */
 public class ControladorCantante {
+
     private Cantante cantante;
     private ICantanteDAO cantanteDAO;
 
@@ -54,13 +55,12 @@ public class ControladorCantante {
     public List<Cantante> listar() {
         return cantanteDAO.findAll();
     }
-    
+
     public Cantante buscarCantantePorDisco(String nombreDisco) {
         return cantanteDAO.buscarPorNombreDeDisco(nombreDisco);
     }
-    
-    //metodos de agregacion
 
+    //metodos de agregacion
     public void ingresarDisco(Cantante cantante, int codigo, String nombre, int anioDeLanzamiento) {
         this.cantante = cantante;
         cantanteDAO.createDisco(this.cantante, codigo, nombre, anioDeLanzamiento);
@@ -72,16 +72,12 @@ public class ControladorCantante {
         return cantanteDAO.readDisco(this.cantante, codigo);
     }
 
-    public boolean eliminarDisco(Cantante cantante, int codigo, String nombre, int anioDeLanzamiento) {
+    public void eliminarDisco(Cantante cantante, int codigo) {
         this.cantante = cantante;
         Disco disco = this.buscarDisco(this.cantante, codigo);
-        if (disco != null) {
-            cantanteDAO.deleteDisco(this.cantante, codigo);
-            cantanteDAO.update(this.cantante);
-            return true;
-        } else {
-            return false;
-        }
+        cantanteDAO.deleteDisco(this.cantante, codigo);
+        cantanteDAO.update(this.cantante);
+
     }
 
     public boolean actualizarDisco(Cantante cantante, int codigo, String nombre, int anioDeLanzamiento) {
